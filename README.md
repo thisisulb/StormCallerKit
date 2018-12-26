@@ -1,4 +1,4 @@
-## StormCallerKit v1.0
+## StormCallerKit v1.1
 ## for BGEE / BG2EE / EET
 
 Unlike other shamans the Storm Caller focuses <PRO_HISHER> attention on harnessing and mastering the powers of the storm. With their ability to conjure up terrible storms and call down lightning on their opponents these shamans make powerful foes and allies even though they are less versed in the ways of the spirit world than others of their kind.
