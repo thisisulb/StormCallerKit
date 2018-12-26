@@ -1,0 +1,120 @@
+BACKUP ~StormCaller/backup~ // So WeiDU can uninstall
+AUTHOR ~Mod Forum: - ~ // Contact address displayed if installation fails
+README ~StormCaller/readme.txt~ // Shows readme file
+VERSION ~1.1~
+
+ALWAYS
+  // Borrowed from Edwin Romance: convert strings to UTF-8 for BGEE/BG2EE
+  INCLUDE ~%MOD_FOLDER%/lib/handle_charsets.tpa~
+
+  // No exception, everything needs to be converted
+  ACTION_DEFINE_ARRAY UBnoconvert BEGIN END
+
+  // ubbear.tra needs to be reloaded?
+  ACTION_DEFINE_ARRAY UBreload BEGIN UBSCL END
+
+  // There is no "language" folder so the root of all languages is %MOD_FOLDER%
+  LAF HANDLE_CHARSETS
+    INT_VAR
+      infer_charset = 1
+    STR_VAR
+      tra_path = EVAL ~%MOD_FOLDER%/translations~
+	  noconvert_array = UBnoconvert
+      reload_array = UBreload
+  END
+    ACTION_IF (NOT GAME_IS ~soa tob iwd2 pst bg1 totsc iwd how totlm tutu tutu_totsc bgt ca iwd_in_bg2 bg2ee eet iwdee~) THEN BEGIN     // Check if BGEE/SOD
+COPY ~StormCaller/files/25STWEAP.2DA~ ~override~                                                               // Add working 25STWEAP.2DA copy from BGII so ADD_KIT command doesn't break
+END
+END
+
+
+LANGUAGE ~English~  ~english~ ~StormCaller/translations/english/UBSCL.tra~
+//LANGUAGE ~Deutsch~  ~german~  ~StormCaller/translations/german/UBSCL.tra~
+
+BEGIN 
+~Storm Caller Shaman Kit~ 
+
+
+// EE compatibility patch, updated version by Subtledoctor
+INCLUDE ~StormCaller/lib/fl#add_kit_ee.tpa~
+
+// Internal name of the kit
+ADD_KIT ~UBSCL~
+
+  // Appended to CLASWEAP.2da
+  ~UBSCL                1           0           1           1           0           0           0           1~
+
+  // Appended column-wise to WEAPPROF.2da
+  ~UBSCL 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 1 1 0 0 0 1 0 0 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  // Appended to ABCLASRQ.2da
+  ~UBSCL                0       0       12       0       12      0~
+
+  // Appended to ABCLSMOD.2da
+  ~UBSCL                0       0       0      0       0       0~
+
+  // Appended to ABDCDSRQ.2da
+  ~UBSCL                0 0 0 0 0 0~
+
+  // Appended to ABDCSCRQ.2da
+  ~UBSCL                0 0 0 0 0 0~
+
+  // Appended to ALIGNMNT.2da
+  ~UBSCL                0       0       0       1       1       1       1       1       1~
+
+  // Appended to DUALCLAS.2da
+  ~UBSCL                0       0       0       0       0       0~
+
+  // Path to my CLAB.2da file 
+  ~StormCaller/files/CLABUBSC.2da~
+
+  // PC races and classes allowed to use this kit, from KITTABLE.2da
+  ~K_SH_H K_SH_HO~
+
+  // Usability flags, added to the end of the KITLIST.2da entry
+  ~0x00004000        21~
+
+  // HLA table to use; see LUABBR.2da
+  ~UBSCL~
+
+  // List of starting equipment for PCs starting in ToB. Appended column-wise to 25STWEAP.2da
+  ~LEAT14 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
+
+  // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da 
+  SAY @1
+  SAY @1
+  SAY @2
+  
+  // Call EE compatibility patch
+  LAF fl#add_kit_ee
+  STR_VAR
+  kit_name = UBSCL
+  END
+
+
+  
+// Copy stuff over to override
+COPY ~StormCaller/files/copy~ ~override~  //bulk copy
+
+COPY ~StormCaller/files/UBSCL1.SPL~ ~override~
+SAY NAME1 @3 // unidentified name for items OR spell name
+SAY UNIDENTIFIED_DESC @4 // unidentified name for items OR spell name
+
+COPY ~StormCaller/files/UBSCL2.SPL~ ~override~
+SAY NAME1 @5 // unidentified name for items OR spell name
+SAY UNIDENTIFIED_DESC @5 // unidentified name for items OR spell name
+
+COPY ~StormCaller/files/UBSCL5.SPL~ ~override~
+SAY NAME1 @6 // unidentified name for items OR spell name
+SAY UNIDENTIFIED_DESC @7 // unidentified name for items OR spell name
+
+COPY ~StormCaller/files/UBSCL6.SPL~ ~override~
+SAY NAME1 @8 // unidentified name for items OR spell name
+SAY UNIDENTIFIED_DESC @9 // unidentified name for items OR spell name
+
+COPY ~StormCaller/files/UBSCL7.SPL~ ~override~
+SAY NAME1 @3 // unidentified name for items OR spell name
+SAY UNIDENTIFIED_DESC @10 // unidentified name for items OR spell name
+
+COPY ~StormCaller/files/UBSCL8.SPL~ ~override~
+SAY NAME1 @5 // unidentified name for items OR spell name
+SAY UNIDENTIFIED_DESC @5 // unidentified name for items OR spell name
