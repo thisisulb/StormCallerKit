@@ -4,6 +4,7 @@ README ~StormCaller/readme.txt~ // Shows readme file
 VERSION ~1.1~
 
 ALWAYS
+  INCLUDE ~%MOD_FOLDER%/lib/RA_SPHERE_COMPAT.tpa~ // Raduziel's DoF's sphere system
   // Borrowed from Edwin Romance: convert strings to UTF-8 for BGEE/BG2EE
   INCLUDE ~%MOD_FOLDER%/lib/handle_charsets.tpa~
 
@@ -88,6 +89,11 @@ ADD_KIT ~UBSCL~
   LAF fl#add_kit_ee
   STR_VAR
   kit_name = UBSCL
+  END
+  
+  // Sphere System
+  ACTION_IF FILE_EXISTS_IN_GAME ~RASPHERE.marker~ BEGIN
+  LAF RA_SPHERE_COMPAT STR_VAR kitname = ~UBSCL~ clabfile = ~CLABUBSC~ END
   END
 
 
