@@ -1,7 +1,7 @@
 BACKUP ~StormCaller/backup~ // So WeiDU can uninstall
 AUTHOR ~Mod Forum: - ~ // Contact address displayed if installation fails
 README ~StormCaller/readme.txt~ // Shows readme file
-VERSION ~1.1~
+VERSION ~1.2~
 
 ALWAYS
   INCLUDE ~%MOD_FOLDER%/lib/RA_SPHERE_COMPAT.tpa~ // Raduziel's DoF's sphere system
@@ -93,7 +93,7 @@ ADD_KIT ~UBSCL~
   
   // Sphere System
   ACTION_IF FILE_EXISTS_IN_GAME ~RASPHERE.marker~ BEGIN
-  LAF RA_SPHERE_COMPAT STR_VAR kitname = ~UBSCL~ clabfile = ~CLABUBSC~ END
+  LAF RA_SPHERE_COMPAT STR_VAR kitname = ~UBSCL~ clabfile = ~CLABUBSC~ seqresref  = ~UBSCL~ END
   END
 
 
